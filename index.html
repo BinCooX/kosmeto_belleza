@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kosmeto Belleza | Cosmetología y Estética en Ecuador</title>
+  <meta name="description" content="Kosmeto Belleza: tratamientos faciales y corporales de vanguardia en Santo Domingo, Ecuador. Limpieza facial, ácido hialurónico, anti-edad, masajes reductores y más. Agenda por WhatsApp." />
+  <meta name="theme-color" content="#C5A059" />
+  <link rel="icon" type="image/png" href="img/logo-k.png" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#E6CF8B', DEFAULT: '#C5A059', deep: '#A8843F', pure: '#D4AF37' },
+            cream: '#FAFAFA',
+            ink: '#2B2620',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 10px 40px -12px rgba(43, 38, 32, 0.12)',
+            gold: '0 14px 40px -14px rgba(197, 160, 89, 0.55)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { -webkit-font-smoothing: antialiased; }
+    section { scroll-margin-top: 80px; }
+
+    /* Aparición al hacer scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .12s; } .reveal-d2 { transition-delay: .24s; } .reveal-d3 { transition-delay: .36s; }
+    .fade-up { animation: fadeUp .6s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    #filtros { scrollbar-width: none; } #filtros::-webkit-scrollbar { display: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .fade-up { animation: none; } }
+
+    /* Botón dorado con brillo */
+    .btn-gold { background: linear-gradient(135deg, #D4AF37 0%, #C5A059 50%, #A8843F 100%); background-size: 200% 200%; transition: background-position .6s ease, box-shadow .4s ease, transform .3s ease; }
+    .btn-gold:hover { background-position: 100% 100%; box-shadow: 0 14px 40px -14px rgba(197,160,89,.7); transform: translateY(-2px); }
+
+    /* Tarjetas de tratamiento */
+    .card { transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease, border-color .5s ease; }
+    .card:hover { transform: translateY(-6px); border-color: #C5A059; box-shadow: 0 24px 50px -20px rgba(197,160,89,.45); }
+    .card:hover .card-line { width: 4rem; }
+
+    /* Divisor ornamental */
+    .divider { display:flex; align-items:center; justify-content:center; gap:.75rem; color:#C5A059; }
+    .divider::before, .divider::after { content:''; height:1px; width:3rem; background: currentColor; opacity:.6; }
+
+    /* Header al hacer scroll */
+    #header.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(10px); box-shadow: 0 6px 30px -18px rgba(43,38,32,.25); }
+  </style>
+</head>
+
+<body class="bg-white font-sans text-ink/80 pb-20 md:pb-0">
+
+  <!-- Iconos SVG reutilizables -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.150-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r=".6" fill="currentColor"/></g></symbol>
+  </svg>
+
+  <!-- ============ HEADER ============ -->
+  <header id="header" class="fixed inset-x-0 top-0 z-50 transition-all duration-500">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="#inicio" class="flex items-center gap-3" aria-label="Kosmeto, inicio">
+        <img src="img/logo-k.png" alt="" class="h-12 w-12 object-contain" />
+        <span class="leading-none">
+          <span class="block font-serif text-2xl font-semibold tracking-[0.3em] text-ink">KOSMETO</span>
+          <span class="block text-[10px] uppercase tracking-[0.45em] text-gold">Belleza</span>
+        </span>
+      </a>
+
+      <ul class="hidden items-center gap-9 whitespace-nowrap text-[13px] font-medium uppercase tracking-[0.18em] lg:flex">
+        <li><a href="#inicio" class="nav-link transition hover:text-gold">Inicio</a></li>
+        <li><a href="#tratamientos" class="nav-link transition hover:text-gold">Tratamientos</a></li>
+        <li><a href="#nosotros" class="nav-link transition hover:text-gold">Sobre Nosotros</a></li>
+        <li><a href="#contacto" class="nav-link transition hover:text-gold">Redes y Contacto</a></li>
+      </ul>
+
+      <a href="#" data-wa class="btn-gold hidden rounded-full px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white lg:inline-block">Agendar Cita</a>
+
+      <button id="menuBtn" class="flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="h-px w-6 bg-ink transition"></span>
+        <span class="h-px w-6 bg-ink transition"></span>
+        <span class="h-px w-4 self-end bg-gold transition mr-2.5"></span>
+      </button>
+    </nav>
+
+    <!-- Menú móvil -->
+    <div id="mobileMenu" class="hidden border-t border-gold/20 bg-white/95 backdrop-blur lg:hidden">
+      <ul class="flex flex-col px-6 py-4 text-sm font-medium uppercase tracking-[0.18em]">
+        <li><a href="#inicio" class="block py-3 border-b border-ink/5">Inicio</a></li>
+        <li><a href="#tratamientos" class="block py-3 border-b border-ink/5">Tratamientos</a></li>
+        <li><a href="#nosotros" class="block py-3 border-b border-ink/5">Sobre Nosotros</a></li>
+        <li><a href="#contacto" class="block py-3">Redes y Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="relative flex min-h-[100svh] items-center overflow-hidden bg-cream">
+      <!-- Imagen de fondo: reemplaza la URL por tu propia foto (Adjuntos/hero.jpg, por ejemplo) -->
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1800&q=80')] bg-cover bg-center"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30 md:to-white/10"></div>
+
+      <div class="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-16 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="reveal mb-6 text-xs font-semibold uppercase tracking-[0.4em] text-gold">Estética integral · Santo Domingo</p>
+          <h1 class="reveal reveal-d1 font-serif text-5xl font-medium leading-[1.05] text-ink sm:text-6xl lg:text-7xl">
+            Realza tu belleza natural con tratamientos <em class="text-gold">de vanguardia</em>
+          </h1>
+          <p class="reveal reveal-d2 mt-6 max-w-lg text-base leading-relaxed text-ink/70 sm:text-lg">
+            Protocolos personalizados, aparatología de última generación y un trato exclusivo para que tu piel luzca radiante, sana y llena de vida.
+          </p>
+          <div class="reveal reveal-d3 mt-10 flex flex-col gap-4 sm:flex-row">
+            <a href="#" data-wa class="btn-gold inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-gold">
+              <svg class="h-5 w-5"><use href="#i-whatsapp"/></svg> Reserva por WhatsApp
+            </a>
+            <a href="#tratamientos" class="inline-flex items-center justify-center rounded-full border border-ink/20 bg-white/60 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-ink transition hover:border-gold hover:text-gold">
+              Ver Tratamientos
+            </a>
+          </div>
+          <dl class="reveal reveal-d3 mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-gold/30 pt-8">
+            <div><dt class="font-serif text-3xl text-gold">+2.000</dt><dd class="text-[11px] uppercase tracking-widest">Clientas felices</dd></div>
+            <div><dt class="font-serif text-3xl text-gold">5</dt><dd class="text-[11px] uppercase tracking-widest">Años de experiencia</dd></div>
+            <div><dt class="font-serif text-3xl text-gold">100%</dt><dd class="text-[11px] uppercase tracking-widest">Personalizado</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRATAMIENTOS ============ -->
+    <section id="tratamientos" class="bg-white py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <p class="divider text-xs font-semibold uppercase tracking-[0.4em]">Tratamientos</p>
+          <h2 class="mt-5 font-serif text-4xl font-medium text-ink sm:text-5xl">Rituales de belleza diseñados para ti</h2>
+          <p class="mt-5 leading-relaxed text-ink/65">Belleza con ciencia: cada tratamiento inicia con una valoración personalizada. Precios referenciales en USD, sujetos a actualización y valoración.</p>
+        </div>
+
+        <!-- Filtros, intro y tarjetas se generan desde CATEGORIAS y TRATAMIENTOS (ver script al final) -->
+        <div id="filtros" role="tablist" aria-label="Categorías de tratamientos" class="reveal -mx-5 mt-12 flex gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0"></div>
+        <p id="introCategoria" class="mx-auto mt-8 max-w-2xl text-center font-serif text-lg italic text-ink/60"></p>
+        <div id="gridTratamientos" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+        <p class="reveal mt-12 text-center text-sm text-ink/60">¿No sabes cuál elegir? <a href="#" data-wa data-msg="Hola Kosmeto, me gustaría una valoración para saber qué tratamiento es ideal para mí." class="font-semibold text-gold underline-offset-4 hover:underline">Pide una valoración gratuita</a></p>
+      </div>
+    </section>
+
+    <!-- ============ NOSOTROS / EXPERIENCIA ============ -->
+    <section id="nosotros" class="bg-cream py-24 lg:py-32">
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-2 lg:px-8">
+        <div class="reveal relative">
+          <div class="aspect-[4/5] overflow-hidden rounded-[2rem] bg-gradient-to-br from-gold-light/40 to-white shadow-soft">
+            <!-- Foto: Unsplash (licencia libre) — tratamiento corporal en abdomen -->
+            <img src="https://images.unsplash.com/photo-1761819922058-d15028ed9817?auto=format&fit=crop&w=1000&q=80" alt="Tratamiento de contorno corporal en abdomen en Kosmeto" class="h-full w-full object-cover object-[55%_50%]" loading="lazy" onerror="this.remove()" />
+          </div>
+          <div class="absolute -bottom-6 right-4 rounded-2xl border border-gold/30 bg-white px-6 py-5 shadow-soft lg:-right-6">
+            <p class="font-serif text-3xl text-gold">Cosmiatras</p>
+            <p class="text-xs uppercase tracking-widest">certificadas</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="reveal text-xs font-semibold uppercase tracking-[0.4em] text-gold">Nuestra experiencia</p>
+          <h2 class="reveal reveal-d1 mt-5 font-serif text-4xl font-medium text-ink sm:text-5xl">Belleza con ciencia y atención personalizada</h2>
+          <p class="reveal reveal-d2 mt-6 leading-relaxed text-ink/70">En Kosmeto creemos que la belleza nace de una piel sana. Trabajamos con activos de grado profesional, protocolos de bioseguridad estrictos y un acompañamiento cercano antes, durante y después de cada tratamiento.</p>
+
+          <ol class="mt-10 space-y-6">
+            <li class="reveal flex gap-5"><span class="font-serif text-3xl text-gold">01</span><div><h3 class="font-semibold text-ink">Valoración</h3><p class="text-sm text-ink/65">Analizamos tu tipo de piel y tus objetivos.</p></div></li>
+            <li class="reveal reveal-d1 flex gap-5"><span class="font-serif text-3xl text-gold">02</span><div><h3 class="font-semibold text-ink">Protocolo a medida</h3><p class="text-sm text-ink/65">Diseñamos un plan con sesiones y cuidados en casa.</p></div></li>
+            <li class="reveal reveal-d2 flex gap-5"><span class="font-serif text-3xl text-gold">03</span><div><h3 class="font-semibold text-ink">Seguimiento</h3><p class="text-sm text-ink/65">Medimos tu evolución y ajustamos para mejores resultados.</p></div></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="mx-auto mt-24 grid max-w-7xl gap-6 px-5 md:grid-cols-2 lg:px-8">
+        <a href="https://www.tiktok.com/@kosmetobellezastodgo" target="_blank" rel="noopener" class="card reveal group flex items-center gap-6 rounded-3xl border border-ink/10 bg-ink p-8 text-white">
+          <span class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/10 transition group-hover:bg-white/20">
+            <svg class="h-8 w-8"><use href="#i-tiktok"/></svg>
+          </span>
+          <span class="flex-1">
+            <span class="block text-xs uppercase tracking-[0.3em] text-gold-light">TikTok · @kosmetobellezastodgo</span>
+            <span class="mt-2 block font-serif text-2xl leading-snug">Síguenos en TikTok para ver nuestros procedimientos en vivo</span>
+          </span>
+          <span class="text-2xl text-gold transition group-hover:translate-x-1">→</span>
+        </a>
+        <a href="https://www.instagram.com/kosmetobelleza/" target="_blank" rel="noopener" class="card reveal reveal-d1 group flex items-center gap-6 rounded-3xl border border-gold/20 bg-gradient-to-br from-[#fdf6ea] via-white to-[#fbeef3] p-8">
+          <span class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white">
+            <svg class="h-8 w-8"><use href="#i-instagram"/></svg>
+          </span>
+          <span class="flex-1">
+            <span class="block text-xs uppercase tracking-[0.3em] text-gold">Instagram · @kosmetobelleza</span>
+            <span class="mt-2 block font-serif text-2xl leading-snug text-ink">Explora nuestros resultados diarios en Instagram</span>
+          </span>
+          <span class="text-2xl text-gold transition group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="bg-white py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <p class="divider text-xs font-semibold uppercase tracking-[0.4em]">Contacto</p>
+          <h2 class="mt-5 font-serif text-4xl font-medium text-ink sm:text-5xl">Te esperamos en nuestro spa</h2>
+        </div>
+
+        <div class="mt-16 grid gap-6 lg:grid-cols-3">
+          <div class="reveal rounded-3xl border border-ink/10 bg-cream p-8">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Ubicación</h3>
+            <p class="mt-4 font-serif text-2xl text-ink">Santo Domingo, Ecuador</p>
+            <p class="mt-2 text-sm leading-relaxed">Av. Abraham Calazacón y Av. Tsáfiqui,<br>altos de Farmacia Cruz Azul<br>(Sector El Arbolito) · Santo Domingo de los Tsáchilas</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Av.+Abraham+Calazac%C3%B3n+y+Av.+Ts%C3%A1fiqui+Santo+Domingo+Ecuador" target="_blank" rel="noopener" class="mt-5 inline-block text-sm font-semibold text-gold hover:underline underline-offset-4">Abrir en Google Maps →</a>
+            <a href="#como-llegar" class="ml-4 mt-5 inline-block text-sm font-semibold text-ink/60 hover:text-gold">Ver indicaciones ↓</a>
+          </div>
+          <div class="reveal reveal-d1 rounded-3xl border border-ink/10 bg-cream p-8">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Horarios</h3>
+            <ul class="mt-4 space-y-3 text-sm">
+              <li class="flex justify-between border-b border-ink/10 pb-3"><span>Lunes a Viernes</span><span class="font-medium text-ink">09:00 – 18:00</span></li>
+              <li class="flex justify-between border-b border-ink/10 pb-3"><span>Sábado</span><span class="font-medium text-ink">09:00 – 14:00</span></li>
+              <li class="flex justify-between"><span>Domingo</span><span class="font-medium text-ink">Cerrado</span></li>
+            </ul>
+          </div>
+          <div class="reveal reveal-d2 rounded-3xl border border-gold/40 bg-white p-8 shadow-soft">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Contacto rápido</h3>
+            <div class="mt-5 flex flex-col gap-3">
+              <a href="#" data-wa class="btn-gold flex items-center justify-center gap-3 rounded-full px-6 py-3.5 text-sm font-semibold text-white"><svg class="h-5 w-5"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+              <a href="tel:+593996939093" class="rounded-full border border-ink/15 px-6 py-3.5 text-center text-sm font-semibold transition hover:border-gold hover:text-gold">Llamar: 099 693 9093</a>            </div>
+          </div>
+        </div>
+
+        <!-- Cómo llegar: referencias tomadas del video de recorrido -->
+        <div id="como-llegar" class="mt-6 overflow-hidden rounded-3xl border border-gold/30 bg-cream">
+          <div class="p-8 lg:p-12">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.3em] text-gold">¿Cómo llegar?</h3>
+            <p class="mt-3 font-serif text-3xl text-ink">Estamos en los altos de la Farmacia Cruz Azul</p>
+            <ol class="mt-8 grid gap-6 md:grid-cols-2">
+              <li class="reveal flex gap-4"><span class="font-serif text-2xl leading-none text-gold">01</span><p class="text-sm leading-relaxed">Ubica la esquina con semáforo frente al local <strong class="text-ink">El Refugio</strong> y camina por la vereda con la avenida a tu derecha.</p></li>
+              <li class="reveal reveal-d1 flex gap-4"><span class="font-serif text-2xl leading-none text-gold">02</span><p class="text-sm leading-relaxed">Pasarás por <strong class="text-ink">Parrilladas Bariloche</strong>, Solo Uñas, Ay Bendito, una óptica y el local de herramientas INGCO.</p></li>
+              <li class="reveal reveal-d2 flex gap-4"><span class="font-serif text-2xl leading-none text-gold">03</span><p class="text-sm leading-relaxed">Llegarás a la <strong class="text-ink">Farmacia Cruz Azul</strong>. Justo a su derecha, antes de la cortina metálica verde, está nuestra <strong class="text-ink">puerta negra</strong>: timbra en el intercomunicador.</p></li>
+              <li class="reveal reveal-d3 flex gap-4"><span class="font-serif text-2xl leading-none text-gold">04</span><p class="text-sm leading-relaxed">Sube las escaleras hasta el <strong class="text-ink">piso superior</strong>. ¡Te esperamos en recepción!</p></li>
+            </ol>
+            <a href="https://www.tiktok.com/@kosmetobellezastodgo" target="_blank" rel="noopener" class="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-black hover:shadow-gold sm:w-auto">
+              <svg class="h-5 w-5"><use href="#i-tiktok"/></svg> Ver el video del recorrido en TikTok
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal mt-6 overflow-hidden rounded-3xl border border-ink/10">
+          <iframe title="Mapa de Kosmeto en Santo Domingo" class="h-72 w-full grayscale-[60%]" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Av.%20Abraham%20Calazac%C3%B3n%20y%20Av.%20Ts%C3%A1fiqui%2C%20Santo%20Domingo%2C%20Ecuador&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink py-14 text-white/70">
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-8 px-5 text-center lg:px-8">
+      <div>
+        <img src="img/logo-k.png" alt="Logo de Kosmeto Belleza" class="mx-auto mb-4 h-20 w-20 object-contain" />
+        <p class="font-serif text-3xl tracking-[0.35em] text-white">KOSMETO</p>
+        <p class="mt-1 text-[10px] uppercase tracking-[0.5em] text-gold">Belleza</p>
+      </div>
+      <div class="flex gap-4">
+        <a href="https://www.instagram.com/kosmetobelleza/" target="_blank" rel="noopener" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition hover:border-gold hover:text-gold"><svg class="h-5 w-5"><use href="#i-instagram"/></svg></a>
+        <a href="https://www.tiktok.com/@kosmetobellezastodgo" target="_blank" rel="noopener" aria-label="TikTok" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition hover:border-gold hover:text-gold"><svg class="h-5 w-5"><use href="#i-tiktok"/></svg></a>
+        <a href="#" data-wa aria-label="WhatsApp" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition hover:border-gold hover:text-gold"><svg class="h-5 w-5"><use href="#i-whatsapp"/></svg></a>
+      </div>
+      <div class="h-px w-24 bg-gold/50"></div>
+      <p class="text-xs tracking-wider">© <span id="year"></span> Kosmeto Belleza. Todos los derechos reservados. · Santo Domingo, Ecuador</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante: barra inferior en móvil, botón circular en escritorio -->
+  <a href="#" data-wa class="btn-gold fixed inset-x-4 bottom-4 z-40 flex items-center justify-center gap-3 rounded-full py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-gold md:hidden">
+    <svg class="h-5 w-5"><use href="#i-whatsapp"/></svg> Agendar por WhatsApp
+  </a>
+  <a href="#" data-wa aria-label="Escríbenos por WhatsApp" class="fixed bottom-8 right-8 z-40 hidden h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-soft transition hover:scale-110 md:flex">
+    <span class="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-20"></span>
+    <svg class="relative h-8 w-8"><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <script>
+    /* ===================== CONFIGURACIÓN ===================== */
+    // Número de WhatsApp con código de país (593 = Ecuador), sin "+", espacios ni el 0 inicial.
+    const WHATSAPP = '593996939093';
+    const MENSAJE_GENERAL = 'Hola Kosmeto, me gustaría agendar una valoración personalizada.';
+
+    // Categorías del catálogo (en el orden en que aparecen los filtros).
+    const CATEGORIAS = [
+      { id: 'endolaser', nombre: 'Endoláser', destacado: true, intro: 'Tecnología láser con fibra óptica para trabajar grasa localizada y favorecer la retracción de tejidos, según valoración. Procedimiento mínimamente invasivo; los resultados varían.' },
+      { id: 'facial', nombre: 'Limpieza facial', intro: 'Opciones de cuidado facial adaptadas al tipo y estado de tu piel.' },
+      { id: 'rejuvenecimiento', nombre: 'Rejuvenecimiento', intro: 'La indicación y el número de sesiones dependen de una valoración individual.' },
+      { id: 'laser', nombre: 'Manchas y depilación láser', intro: 'Los tratamientos pigmentarios requieren diagnóstico diferencial y fotoprotección.' },
+      { id: 'corporal', nombre: 'Corporales', intro: 'Programas de remodelación corporal y cuidados complementarios con valoración previa.' },
+      { id: 'capilar', nombre: 'Capilares', intro: 'En la caída de cabello es importante identificar la causa antes de iniciar el tratamiento.' },
+      { id: 'intima', nombre: 'Estética íntima', intro: 'Atención con valoración profesional y consentimiento específico.' },
+    ];
+
+    // Edita aquí tus tratamientos. precio: texto en USD, o null para mostrar "Consultar". nota: aclaración bajo el precio.
+    const TRATAMIENTOS = [
+      // 01 Endoláser
+      { cat: 'endolaser', nombre: 'Endoláser abdomen', precio: '$350', desc: 'Láser de fibra óptica que, a través de una microincisión, actúa sobre la grasa localizada del abdomen y estimula la retracción de la piel para un contorno más firme y definido. Incluye 3 drenajes linfáticos y una sesión mensual de radiofrecuencia + EMS Sculpt para acompañar tu recuperación.' },
+      { cat: 'endolaser', nombre: 'Endoláser espalda', precio: '$350', desc: 'Trabaja los depósitos de grasa localizada en espalda alta y baja, como los pliegues bajo el brasier y sobre la cintura. Ayuda a estilizar la silueta y mejorar la firmeza de la piel. Incluye cuidados complementarios según tu plan.' },
+      { cat: 'endolaser', nombre: 'Endoláser abdomen + espalda', precio: '$700', nota: 'Precio regular de ambas zonas', desc: 'Protocolo combinado que trata abdomen y espalda en un mismo plan para armonizar el contorno de la cintura en 360°. Ideal si buscas un cambio integral de la silueta. Incluye cuidados complementarios según plan.' },
+      { cat: 'endolaser', nombre: 'Endoláser brazos', precio: '$250', desc: 'Actúa sobre la grasa localizada en la parte posterior del brazo y estimula la retracción de la piel, ayudando a mejorar la apariencia de flacidez para lucir brazos más estilizados y firmes.' },
+      { cat: 'endolaser', nombre: 'Endoláser piernas / entrepierna', precio: '$250', desc: 'Indicado en casos seleccionados para tratar la grasa localizada en la cara interna del muslo y la entrepierna, favoreciendo una piel más firme y un contorno de piernas más armónico.' },
+      { cat: 'endolaser', nombre: 'Endoláser papada', precio: '$250', desc: 'Trabaja la grasa bajo el mentón y estimula la retracción de la piel para definir el ángulo de la mandíbula, perfilar el contorno del rostro y lucir un cuello más estilizado.' },
+      { cat: 'endolaser', nombre: 'Endoláser rostro', precio: '$350', desc: 'En pacientes seleccionados, el láser actúa en las capas profundas de la piel del rostro para estimular colágeno, mejorar la firmeza y redefinir el óvalo facial, especialmente en mejillas y línea mandibular.' },
+      { cat: 'endolaser', nombre: 'Endoláser facial + papada', precio: null, nota: 'Según valoración', desc: 'Protocolo combinado que trabaja rostro y zona submentoniana en un mismo plan para lograr un contorno facial más definido y armónico. El tratamiento se diseña después de tu valoración.' },
+      // 02 Limpieza y renovación facial
+      { cat: 'facial', nombre: 'Limpieza facial profunda con Hidrafacial', precio: '$30', desc: 'Limpieza completa que combina extracción, exfoliación e hidratación con tecnología Hidrafacial. Retira impurezas y células muertas, ayuda a desobstruir los poros y deja la piel fresca, suave y luminosa.' },
+      { cat: 'facial', nombre: 'Hollywood Peeling', precio: '$40', desc: 'También conocido como peeling de carbón: se aplica carbón activado que luego el láser retira junto con impurezas y exceso de grasa. Ayuda a afinar poros, mejorar la textura y lograr un acabado luminoso. Incluye limpieza facial básica.' },
+      { cat: 'facial', nombre: 'Dermaplaning', precio: '$30', desc: 'Exfoliación manual con bisturí especializado que retira células muertas y el vello fino del rostro. La piel queda más suave y uniforme, el maquillaje se asienta mejor y tus productos se absorben con mayor facilidad.' },
+      { cat: 'facial', nombre: 'Peeling químico para despigmentación facial', precio: '$40', desc: 'Aplicación controlada de ácidos que renuevan las capas superficiales de la piel para atenuar gradualmente manchas y tono desigual. La fórmula se elige según tu tipo de piel y requiere fotoprotección diaria.' },
+      { cat: 'facial', nombre: 'Rejuvenecimiento facial con activos + radiofrecuencia', precio: '$55', desc: 'Combina activos cosméticos de alta concentración con radiofrecuencia, que genera calor controlado para estimular el colágeno. Mejora la hidratación, la luminosidad y la apariencia de firmeza y líneas finas.' },
+      // 03 Rejuvenecimiento y tecnología facial
+      { cat: 'rejuvenecimiento', nombre: 'Láser CO₂ fraccionado facial', precio: '$55', desc: 'Láser que crea microzonas de renovación en la piel para estimular colágeno nuevo. Mejora la textura, las líneas finas, los poros dilatados y ciertas cicatrices de acné. Requiere cuidados posteriores y algunos días de recuperación.' },
+      { cat: 'rejuvenecimiento', nombre: 'Láser CO₂ para cicatrices en brazos', precio: '$55', desc: 'Aplicación de láser CO₂ fraccionado sobre cicatrices seleccionadas en los brazos para estimular la renovación del tejido y mejorar gradualmente su textura, relieve y apariencia.' },
+      { cat: 'rejuvenecimiento', nombre: 'Láser CO₂ para estrías', precio: '$60', desde: true, desc: 'El láser estimula la producción de colágeno y elastina en la zona de las estrías para mejorar progresivamente su textura, color y profundidad. Se trabaja por sesiones; los resultados varían según cada piel.' },
+      { cat: 'rejuvenecimiento', nombre: 'Plasma rico en plaquetas (PRP) facial', precio: '$40', desc: 'Se obtiene plasma rico en plaquetas de tu propia sangre y se aplica en el rostro. Sus factores de crecimiento apoyan la reparación de la piel y mejoran su luminosidad, textura y firmeza de forma natural.' },
+      { cat: 'rejuvenecimiento', nombre: 'Exosomas faciales', precio: '$50', desc: 'Vesículas bioactivas que actúan como mensajeras para favorecer la regeneración de la piel. Complementan otros tratamientos y ayudan a mejorar su calidad, luminosidad y apariencia general.' },
+      { cat: 'rejuvenecimiento', nombre: 'PDRN con Dermapen', precio: '$50', desc: 'Microneedling con Dermapen que abre microcanales para introducir PDRN (polinucleótidos), un activo regenerador. Apoya la hidratación profunda y mejora la apariencia de la textura, los poros y las marcas leves.' },
+      { cat: 'rejuvenecimiento', nombre: 'Skinbooster', precio: '$50', desc: 'Microinyecciones de ácido hialurónico ligero distribuidas en la piel para hidratarla desde el interior. Mejoran la elasticidad y la calidad de la piel, aportando un aspecto descansado y luminoso sin cambiar tus facciones.' },
+      { cat: 'rejuvenecimiento', nombre: 'Radiofrecuencia facial', precio: null, desc: 'Calor controlado que estimula las fibras de colágeno para mejorar temporalmente la apariencia de firmeza y tensión de la piel. Ideal como tratamiento de mantenimiento o combinado con otros protocolos.' },
+      { cat: 'rejuvenecimiento', nombre: 'Toxina botulínica full face', precio: '$180', desc: 'Aplicación de toxina botulínica por profesional habilitado en frente, entrecejo y patas de gallo para suavizar las líneas de expresión, buscando un resultado natural que respete tus gestos.' },
+      { cat: 'rejuvenecimiento', nombre: 'Toxina botulínica por zona', precio: null, desc: 'Tratamiento focalizado en una zona específica, como frente, entrecejo o patas de gallo, para suavizar las arrugas dinámicas que aparecen con la expresión facial.' },
+      // 04 Manchas, tatuajes y depilación láser
+      { cat: 'laser', nombre: 'Láser picosegundo para manchas', precio: '$35', nota: 'Por sesión', desc: 'Láser de pulsos ultracortos que fragmenta el pigmento de manchas seleccionadas para que el organismo lo elimine de forma progresiva. La indicación depende del tipo de mancha, por eso inicia con un diagnóstico.' },
+      { cat: 'laser', nombre: 'Peeling para manchas', precio: '$40', nota: 'Por sesión', desc: 'Peeling despigmentante que renueva las capas superficiales de la piel para atenuar gradualmente manchas y unificar el tono. La fórmula se elige según tu tipo de piel y requiere fotoprotección diaria.' },
+      { cat: 'laser', nombre: 'Peeling para manchas · paquete', precio: '$120', nota: 'Paquete de 4 sesiones', desc: 'Plan de 4 sesiones de peeling despigmentante para un trabajo progresivo y constante sobre manchas y tono desigual, con seguimiento de tu evolución entre sesiones.' },
+      { cat: 'laser', nombre: 'Eliminación láser de tatuajes pequeños', precio: null, nota: 'Precio por sesión', desc: 'El láser fragmenta los pigmentos del tatuaje para aclararlo de forma progresiva, sesión a sesión. El número de sesiones depende del tamaño, los colores y la antigüedad del tatuaje.' },
+      { cat: 'laser', nombre: 'Depilación láser bikini', precio: '$140', nota: 'Plan de 8 sesiones', desc: 'Láser que actúa sobre el folículo para reducir progresivamente el crecimiento del vello en la zona bikini, ayudando a disminuir la irritación y los vellos encarnados del rasurado.' },
+      { cat: 'laser', nombre: 'Depilación láser axilas + bikini', precio: '$220', nota: 'Plan de 8 sesiones', desc: 'Plan combinado para reducir progresivamente el vello en axilas y zona bikini, dos de las áreas más solicitadas. Menos rasurado, menos irritación y una piel más suave.' },
+      { cat: 'laser', nombre: 'Depilación láser barba, cuello y axilas (hombres)', precio: '$250', nota: 'Plan de 8 sesiones', desc: 'Reducción progresiva del vello en barba, cuello y axilas. Ayuda a disminuir la irritación del afeitado y los vellos encarnados, y facilita mantener un perfilado limpio.' },
+      { cat: 'laser', nombre: 'Depilación láser axilas', precio: '$100', desc: 'Reducción progresiva del vello axilar con láser, ayudando a disminuir la irritación y los vellos encarnados que provoca el rasurado frecuente.' },
+      { cat: 'laser', nombre: 'Depilación láser brasilero', precio: '$180', desc: 'Depilación láser completa de la zona íntima, incluyendo pubis, labios y zona interglútea. Reduce progresivamente el vello y ayuda a evitar la irritación y los vellos encarnados de la cera o el rasurado.' },
+      { cat: 'laser', nombre: 'Depilación láser bigote', precio: '$80', desc: 'Reducción progresiva del vello del labio superior con un láser preciso para zonas pequeñas, dejando la piel del rostro suave y uniforme sin necesidad de pinzas ni cera.' },
+      { cat: 'laser', nombre: 'Depilación láser media pierna', precio: '$200', desc: 'Reducción progresiva del vello desde la rodilla hasta el tobillo, ajustada a tu fototipo y a las características de tu vello, para unas piernas suaves con menos rasurado.' },
+      { cat: 'laser', nombre: 'Depilación láser pierna completa', precio: '$250', desc: 'Tratamiento de toda la pierna, desde el muslo hasta el tobillo, para reducir progresivamente el vello y disminuir la irritación y los vellos encarnados del rasurado frecuente.' },
+      { cat: 'laser', nombre: 'Depilación láser brazos', precio: '$200', desc: 'Reducción progresiva del vello en brazos completos, ajustada a tu fototipo, para una piel más suave y uniforme sin necesidad de rasurar.' },
+      // 05 Tratamientos corporales y recuperación
+      { cat: 'corporal', nombre: 'Programa de glúteos', precio: '$250', nota: 'Programa de 8 sesiones', desc: 'Programa que combina peptonas, activos reafirmantes, vacumterapia y EMS Sculpt + radiofrecuencia para trabajar el tono, la firmeza y la apariencia de volumen de los glúteos, según protocolo.' },
+      { cat: 'corporal', nombre: 'Tratamiento anticelulítico', precio: null, desc: 'Combina vacumterapia, maderoterapia y otras técnicas según tu evaluación para activar la circulación y mejorar la textura de la piel y la apariencia de la celulitis.' },
+      { cat: 'corporal', nombre: 'EMS Sculpt + radiofrecuencia', precio: null, desc: 'La estimulación electromagnética genera contracciones musculares intensas mientras la radiofrecuencia aporta calor controlado. Juntas apoyan el tono muscular y la apariencia de firmeza de la piel.' },
+      { cat: 'corporal', nombre: 'Drenaje linfático manual', precio: '$25', nota: 'Por sesión', desc: 'Masaje suave y rítmico que estimula el sistema linfático para favorecer la eliminación de líquidos retenidos, aliviar la sensación de pesadez y ayudar en el manejo del edema.' },
+      { cat: 'corporal', nombre: 'Drenajes posteriores a procedimientos', precio: '$250', nota: 'Programa de 10 sesiones', desc: 'Programa de masajes y equipos complementarios que acompaña tu recuperación después de procedimientos como el endoláser, ayudando a manejar la inflamación cuando esté indicado.' },
+      { cat: 'corporal', nombre: 'Tratamiento de fibrosis', precio: '$250', nota: 'Programa de 10 sesiones', desc: 'Masajes especializados y tecnologías complementarias para suavizar zonas endurecidas después de un procedimiento, mejorando la movilidad y la textura del tejido según evaluación.' },
+      { cat: 'corporal', nombre: 'Ultrasonido, vacumterapia y presoterapia', precio: null, desc: 'Tecnologías que se integran a tu programa corporal: el ultrasonido trabaja el tejido, la vacumterapia activa la circulación y la presoterapia favorece el drenaje de líquidos.' },
+      // 06 Tratamientos capilares
+      { cat: 'capilar', nombre: 'PRP capilar', precio: '$40', desc: 'Plasma rico en plaquetas obtenido de tu propia sangre y aplicado en el cuero cabelludo. Sus factores de crecimiento apoyan al folículo como complemento en casos seleccionados de caída capilar.' },
+      { cat: 'capilar', nombre: 'Exosomas capilares', precio: '$50', desc: 'Activos regenerativos aplicados en el cuero cabelludo para favorecer un entorno saludable del folículo. Complementan otros tratamientos en planes para el debilitamiento del cabello.' },
+      { cat: 'capilar', nombre: 'Microneedling capilar', precio: null, desc: 'Microestimulación del cuero cabelludo que activa la circulación local y mejora la penetración de activos capilares, dentro de un plan personalizado para el debilitamiento del cabello.' },
+      // 07 Estética íntima
+      { cat: 'intima', nombre: 'Láser CO₂ íntimo', precio: '$150', nota: 'Por sesión', desc: 'Láser CO₂ aplicado en la zona íntima para indicaciones ginecológicas seleccionadas, como sequedad o laxitud. Se realiza tras valoración médica, con explicación previa de riesgos, beneficios y evidencia.' },
+    ];
+
+    /* ===================== LÓGICA ===================== */
+    const waLink = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+
+    const precioHTML = (t) => t.precio
+      ? `<p class="font-serif text-4xl text-ink">${t.desde ? '<span class="font-sans text-xs uppercase tracking-widest text-ink/50">desde </span>' : ''}${t.precio}<span class="font-sans text-sm text-ink/50"> USD</span></p>`
+      : `<p class="font-serif text-3xl italic text-gold">Consultar precio</p>`;
+
+    const tarjeta = (t, i) => `
+      <article class="card fade-up flex flex-col rounded-3xl border border-ink/10 bg-white p-8 shadow-soft" style="animation-delay:${Math.min(i, 8) * 60}ms">
+        <h3 class="font-serif text-2xl font-medium leading-snug text-ink">${t.nombre}</h3>
+        <span class="card-line mt-4 block h-px w-10 bg-gold transition-all duration-500"></span>
+        <p class="mt-4 flex-1 text-sm leading-relaxed text-ink/65">${t.desc}</p>
+        <div class="mt-6">
+          ${precioHTML(t)}
+          ${t.nota ? `<p class="mt-1 text-[11px] uppercase tracking-widest text-ink/50">${t.nota}</p>` : ''}
+        </div>
+        <a href="${waLink(`Hola Kosmeto, me interesa agendar una cita para ${t.nombre}.`)}" target="_blank" rel="noopener"
+           class="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-gold px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold transition hover:bg-gold hover:text-white">
+          <svg class="h-4 w-4"><use href="#i-whatsapp"/></svg> Agendar este servicio
+        </a>
+      </article>`;
+
+    // Filtros por categoría
+    const filtros = document.getElementById('filtros');
+    const mostrarCategoria = (id) => {
+      const cat = CATEGORIAS.find((c) => c.id === id);
+      document.getElementById('introCategoria').textContent = cat.intro;
+      document.getElementById('gridTratamientos').innerHTML = TRATAMIENTOS.filter((t) => t.cat === id).map(tarjeta).join('');
+      filtros.querySelectorAll('button').forEach((b) => {
+        const activo = b.dataset.cat === id;
+        b.setAttribute('aria-selected', activo);
+        b.className = 'shrink-0 whitespace-nowrap rounded-full border px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] transition ' +
+          (activo ? 'border-gold bg-gold text-white shadow-gold' : 'border-ink/15 text-ink/70 hover:border-gold hover:text-gold');
+      });
+    };
+    filtros.innerHTML = CATEGORIAS.map((c) =>
+      `<button type="button" role="tab" data-cat="${c.id}">${c.nombre}${c.destacado ? ' ✦' : ''}</button>`).join('');
+    filtros.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) mostrarCategoria(b.dataset.cat); });
+    mostrarCategoria(CATEGORIAS[0].id);
+
+    // Todos los botones generales de WhatsApp
+    document.querySelectorAll('[data-wa]').forEach((a) => {
+      a.href = waLink(a.dataset.msg || MENSAJE_GENERAL);
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+
+    // Menú móvil
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const toggleMenu = (open) => {
+      mobileMenu.classList.toggle('hidden', !open);
+      menuBtn.setAttribute('aria-expanded', open);
+    };
+    menuBtn.addEventListener('click', () => toggleMenu(mobileMenu.classList.contains('hidden')));
+    mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggleMenu(false)));
+
+    // Header con fondo al hacer scroll
+    const header = document.getElementById('header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 30 || !mobileMenu.classList.contains('hidden'));
+    window.addEventListener('scroll', onScroll, { passive: true });
+    menuBtn.addEventListener('click', onScroll);
+    onScroll();
+
+    // Animaciones de aparición
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    // Resaltar enlace activo del menú
+    const links = document.querySelectorAll('.nav-link');
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) links.forEach((l) => l.classList.toggle('text-gold', l.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('main section[id]').forEach((s) => spy.observe(s));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
